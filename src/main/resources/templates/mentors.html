@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" th:href="@{/css/utils.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body class='overflow-x-hidden'>
+<div class="container mx-auto">
+    <header>
+        <nav class="flex justify-between">
+            <div class="logo font-bold flex items-center text-blue">Find&Connect</div>
+            <ul class="navbar flex items-center content">
+                <li><a th:href="@{/}"><span>HOME</span></a></li>
+
+                <li><a th:href="@{/contests}"><span>FIND</span>&nbsp;<span>CONTEST</span></a></li>
+
+
+                <li>
+                    <div class="dropdown content">
+                        <b><span>Connect</span></b>
+                        <div class="dropdown-content">
+                            <a th:href="@{/mentor}">As Mentor</a>
+                            <a th:href="@{/mentee}" target="_blank">As Mentee</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a th:href="@{/contests/add}"><span>NOTIFY</span>&nbsp;<span>CONTEST</span></a></li>
+
+                <li><a th:href="@{/problems}"><span>SEARCH</span>&nbsp;<span>PROBLEM</span></a></li>
+
+                <li><a th:href="@{/query}"><span>CONTACT</span></a></li>
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#"><h3>Login</h3></a>
+                </li>
+                <li class="nav-item active" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div class="dropdown content">
+                        <h3 th:text="${#authentication.name}">Username</h3>
+                        <div class="dropdown-content">
+                            <a class="nav-link" th:href="@{/user/{id}(id=${loggedid})}"><span>My Profile</span></a>
+                            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><span>Logout</span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main class="min-h-screen">
+        <section class="section3">
+            <!-- <h1 class="text-center my-2">Compare Plans</h1> -->
+            <h1 class="text-center my-2">Trending Problems</h1>
+            <div class="container plantable">
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th scope="col">Profile Link</th>
+                        <th scope="col">About</th>
+                        <th scope="col">Points</th>
+                        <th scope="col" colspan="2">Vote</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="mentor, iStat : ${mentors}">
+                        <td ><a href="" th:href="@{/user/{id}(id=${mentor.user.id})}" class="btn btn-primary">Profile</a></td>
+                        <td th:text="${mentor.about}" class="text-start">Larry</td>
+                        <td th:text="${mentor.points}" class="text-start">Larry</td>
+                        <td th:unless="${mentee.voted}">
+                            <a href="" th:href="@{/mentor/upvote/{id}(id=${mentor.id})}" class="btn btn-primary">
+                                <span>+</span>
+                            </a>
+                        </td>
+                        <td th:unless="${mentee.voted}">
+                            <a href="" th:href="@{/mentor/downvote/{id}(id=${mentor.id})}" class="btn btn-danger">
+                                <span>-</span>
+                            </a>
+                        </td>
+
+                        <td th:if="${mentee.voted}" colspan="2"><span>Voted</span></td>
+
+                        <td ><a th:href="@{/mentor/delete/{id}(id=${mentor.id})}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <hr>
+    </main>
+    <footer>
+        Copyright &copy; Find&Connect.com | All rights reserved
+    </footer>
+
+</div>
+</body>
+
+</html>

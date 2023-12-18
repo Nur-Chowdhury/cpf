@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/utils.css}">
+</head>
+
+<body class='overflow-x-hidden'>
+<div class="container mx-auto">
+    <header>
+        <nav class="flex justify-between">
+            <div class="logo font-bold flex items-center text-blue">Find&Connect</div>
+            <ul class="navbar flex items-center content">
+                <li><a th:href="@{/}"><span>HOME</span></a></li>
+
+                <li><a th:href="@{/contests}"><span>FIND</span>&nbsp;<span>CONTEST</span></a></li>
+
+
+                <li>
+                    <div class="dropdown content">
+                        <b><span>Connect</span></b>
+                        <div class="dropdown-content">
+                            <a th:href="@{/mentor}">As Mentor</a>
+                            <a th:href="@{/mentee}" target="_blank">As Mentee</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a th:href="@{/contests/add}"><span>NOTIFY</span>&nbsp;<span>CONTEST</span></a></li>
+
+                <li><a th:href="@{/problems}"><span>SEARCH</span>&nbsp;<span>PROBLEM</span></a></li>
+
+                <li><a th:href="@{/query}"><span>CONTACT</span></a></li>
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#"><h3>Login</h3></a>
+                </li>
+                <li class="nav-item active" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div class="dropdown content">
+                        <h3 th:text="${#authentication.name}">Username</h3>
+                        <div class="dropdown-content">
+                            <a class="nav-link" th:href="@{/user/{id}(id=${loggedid})}"><span>My Profile</span></a>
+                            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><span>Logout</span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main class="min-h-screen">
+<!--        <hr>-->
+<!--        <section class="section2">-->
+<!--            <div class="text-center my-2">-->
+<!--                <input type="text" placeholder="Problem Name">-->
+<!--            </div>-->
+<!--            <div class="text-center my-2">-->
+<!--                <input type="text" placeholder="Site">-->
+<!--            </div>-->
+<!--            <div class="text-center my-2">-->
+<!--                <input type="text" placeholder="Search Tags">-->
+<!--            </div>-->
+<!--            <div class="text-center my-2">-->
+<!--                <input type="text" placeholder="Sort By">-->
+<!--            </div>-->
+<!--        </section>-->
+        <section class="section3">
+            <!-- <h1 class="text-center my-2">Compare Plans</h1> -->
+            <h1 class="text-center my-2">Trending Problems</h1>
+            <div class="container plantable">
+<!--                <table class="table text-center">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        &lt;!&ndash; <th></th> &ndash;&gt;-->
+<!--                        <th>Problem Name</th>-->
+<!--                        <th>Problem URL</th>-->
+<!--                        <th>Accuracy</th>-->
+<!--                        <th>User Solved</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Word</th>-->
+<!--                        <td>-</svg></td>-->
+<!--                        <td>93%</svg></td>-->
+<!--                        <td>29,887</svg></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+                <table class="table text-center">
+                    <thead>
+                    <tr>
+                        <th scope="col">SN</th>
+                        <th scope="col">Problem Name</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">OJ</th>
+                        <th scope="col">Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="problem, iStat : ${problems}">
+                        <th scope="row" class="text-start" th:text="${iStat.index + 1}">1</th>
+                        <td th:text="${problem.name}" class="text-start">Larry</td>
+                        <td><a th:href="${problem.link}" target="_blank" class="btn btn-primary">Link</a></td>
+                        <td th:text="${problem.onlineJudge}" class="text-start">Larry</td>
+                        <td th:text="${problem.rating}" class="text-start">Larry</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <hr>
+    </main>
+    <footer>
+        Copyright &copy; Find&Connect.com | All rights reserved
+    </footer>
+
+</div>
+</body>
+
+</html>

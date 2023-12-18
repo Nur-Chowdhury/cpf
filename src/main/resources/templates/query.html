@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contest Finder & Mentor Allocation</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <!-- <link rel="stylesheet" href="style2.css"> -->
+  <script th:href="@{/js/timer.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/utils.css}">
+</head>
+
+<body class='overflow-x-hidden'>
+<div class="container mx-auto">
+  <header>
+    <nav class="flex justify-between">
+      <div class="logo font-bold flex items-center text-blue">Find&Connect</div>
+      <ul class="navbar flex items-center content">
+        <li><a th:href="@{/}"><span>HOME</span></a></li>
+
+        <li><a th:href="@{/contests}"><span>FIND</span>&nbsp;<span>CONTEST</span></a></li>
+
+
+        <li>
+          <div class="dropdown content">
+            <b><span>Connect</span></b>
+            <div class="dropdown-content">
+              <a th:href="@{/mentor}">As Mentor</a>
+              <a th:href="@{/mentee}" target="_blank">As Mentee</a>
+            </div>
+          </div>
+        </li>
+
+        <li><a th:href="@{/contests/add}"><span>NOTIFY</span>&nbsp;<span>CONTEST</span></a></li>
+
+        <li><a th:href="@{/problems}"><span>SEARCH</span>&nbsp;<span>PROBLEM</span></a></li>
+
+        <li><a th:href="@{/query}"><span>CONTACT</span></a></li>
+        <li class="nav-item active">
+          <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#"><h3>Login</h3></a>
+        </li>
+        <li class="nav-item active" th:if="${#authorization.expression('isAuthenticated()')}">
+          <div class="dropdown content">
+            <h3 th:text="${#authentication.name}">Username</h3>
+            <div class="dropdown-content">
+              <a class="nav-link" th:href="@{/user/{id}(id=${loggedid})}"><span>My Profile</span></a>
+              <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><span>Logout</span></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <hr>
+  </header>
+  <main class="min-h-screen">
+    <br><br><br>
+    <section class="section1">
+      <div class="wrapper">
+        <form th:action="@{/query/submit}" method="post">
+          <h1><center>Your Query</center></h1>
+          <br>
+
+          <div class="input-box">
+            <center>
+
+              <label for="short_query">Ask a Query</label>
+              <br>
+
+              <textarea id="short_query" name="content" rows="10" cols="60"></textarea>
+            </center>
+          </div>
+
+
+          <div class="input-box">
+            <!-- <input type="text" required>
+            <i class='bx bxs-user'></i> -->
+          </div>
+          <center><button type="submit" class="btn btn-primary">Submit</button></center>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <hr>
+    Copyright &copy; Find&Connect.com | All rights reserved
+  </footer>
+
+</div>
+</body>
+
+</html>

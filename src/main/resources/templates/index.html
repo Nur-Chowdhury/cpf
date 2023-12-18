@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contest Finder & Mentor Allocation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/utils.css}">
+</head>
+
+<body class='overflow-x-hidden'>
+<div class="container mx-auto">
+    <header>
+        <nav class="flex justify-between">
+            <div class="logo font-bold flex items-center text-blue">Find&Connect</div>
+            <ul class="navbar flex items-center content">
+                <li><a th:href="@{/}"><span>HOME</span></a></li>
+
+                <li><a th:href="@{/contests}"><span>FIND</span>&nbsp;<span>CONTEST</span></a></li>
+
+
+                <li>
+                    <div class="dropdown content">
+                        <b><span>Connect</span></b>
+                        <div class="dropdown-content">
+                            <a th:href="@{/mentor}">As Mentor</a>
+                            <a th:href="@{/mentee}" target="_blank">As Mentee</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a th:href="@{/contests/add}"><span>NOTIFY</span>&nbsp;<span>CONTEST</span></a></li>
+
+                <li><a th:href="@{/problems}"><span>SEARCH</span>&nbsp;<span>PROBLEM</span></a></li>
+
+                <li><a th:href="@{/query}"><span>CONTACT</span></a></li>
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#"><h3>Login</h3></a>
+                </li>
+                <li class="nav-item active" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div class="dropdown content">
+                        <h3 th:text="${#authentication.name}">Username</h3>
+                        <div class="dropdown-content">
+                            <a class="nav-link" th:href="@{/user/{id}(id=${loggedid})}"><span>My Profile</span></a>
+                            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><span>Logout</span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+    <main class="min-h-screen">
+        <section class="section1">
+            <div class="flex">
+
+                <div class="content"><br><br>
+                    <div class="text-center">
+                        <img class="dumbellimg" th:src="@{/images/2last.jpg}" height="" width="" alt="">
+                    </div>
+                    <h1 class="my-1 text-center">Find & Explore</h1>
+                    <p class="par">
+                        <strong>Competitive programming</strong> (also known as <b>sports programming</b>) is a
+                        <span>mind sport</span> involving participants trying to program according to provided
+                        specifications. The contests are usually held over
+                        the <span>Internet</span> or a <span>local network</span>. Contestants are referred to as
+                        sport programmers. Competitive programming is recognized and supported by several
+                        multinational software and <span>Internet</span> companies, such
+                        as <span>Google</span> and <span>Facebook</span>.<br>
+                        A programming competition generally involves the host presenting a set of
+                        <span>logical</span> or <span>mathematical</span><span>problems</span>, also known as
+                        <span>puzzles</span> or challenges, to the contestants (who can vary in number from tens or
+                        even hundreds to several thousand). Contestants are required to write <span>computer
+                                programs</span> capable of solving these problems. Judging is based mostly upon number
+                        of problems solved and time spent on writing
+                        successful solutions, but may also include other factors (quality of output produced,
+                        execution time, memory usage, program size, etc.).
+                    </p>
+                    <!-- <div class="buttons">
+                        <button class="btn">Join now</button>
+                        <button class="btn">Contact Us</button>
+                    </div> -->
+                </div>
+                <div class="topright flex justify-center">
+                    <!-- <img class="gymimg" src="sidephoto2.png" height="500px" width="1500px" alt=""> -->
+                    <img class="gymimg" th:src="@{/images/sidephoto.jpg}" height="500px" width="1500px" alt="">
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="section2">
+            <h1 class="text-center my-2">Current News</h1>
+            <p class="my-2">Problem-solving enables us to identify and exploit opportunities in the environment and
+                exert (some level of) control over the future. Problem solving skills and the problem-solving
+                process are a critical part of daily life both as individuals and organizations.</p>
+            <div class="boxes flex justify-center">
+                <div class="box">
+                    <h2>Find</h2>
+                    <ul>
+                        <li class="highlighted">Different Contest</li>
+                        <li>Participate you own</li>
+                        <li>With Location</li>
+                        <li>Email support</li>
+                        <li>Ask Help</li>
+                        <li><a th:href="@{/contests}"><button class="btn">Join Now</button></a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h2>Search</h2>
+                    <ul>
+                        <li class="highlighted">Lots of Problems</li>
+                        <li>Ascending by Tags</li>
+                        <li>With Editorial</li>
+                        <li>Email support</li>
+                        <li>Ask Help</li>
+                        <li><a th:href="@{/problems}"><button class="btn">Join Now</button></a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h2>Connect</h2>
+                    <ul>
+                        <li class="highlighted">Explore bothend</li>
+                        <li>Enhance Side</li>
+                        <li>With knowledge</li>
+                        <li>Email support</li>
+                        <li>Ask Help</li>
+                        <li><button class="btn">Join Now</button></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+<!--        <hr>-->
+<!--        <section class="section3">-->
+<!--            &lt;!&ndash; <h1 class="text-center my-2">Compare Plans</h1> &ndash;&gt;-->
+<!--            <h1 class="text-center my-2">Trending Problems</h1>-->
+<!--            <div class="container plantable">-->
+<!--                <table class="table text-center">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        &lt;!&ndash; <th></th> &ndash;&gt;-->
+<!--                        <th>Problem Name</th>-->
+<!--                        <th>Problem URL</th>-->
+<!--                        <th>Accuracy</th>-->
+<!--                        <th>User Solved</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Word</th>-->
+<!--                        <td>-</svg></td>-->
+<!--                        <td>93%</svg></td>-->
+<!--                        <td>29,887</svg></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Cupboards</th>-->
+<!--                        <td>-</td>-->
+<!--                        <td>89%</svg></td>-->
+<!--                        <td>19,231</svg></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Amusing Joke</th>-->
+<!--                        <td>-</svg></td>-->
+<!--                        <td>84%</svg></td>-->
+<!--                        <td>19,817</svg></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Team</th>-->
+<!--                        <td>-</td>-->
+<!--                        <td>91%</svg></td>-->
+<!--                        <td>24,897</svg></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Even Odds</th>-->
+<!--                        <td>-</td>-->
+<!--                        <td>87%</svg></td>-->
+<!--                        <td>19,847</svg></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="row" class="text-start">Petr and Book</th>-->
+<!--                        <td>-</td>-->
+<!--                        <td>82%</td>-->
+<!--                        <td>22,897</svg></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </section>-->
+        <hr>
+    </main>
+    <footer>
+        Copyright &copy; Find&Connect.com | All rights reserved
+    </footer>
+
+</div>
+</body>
+
+</html>

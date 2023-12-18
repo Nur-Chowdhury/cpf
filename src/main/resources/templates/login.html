@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
+    <script src="timer.js"></script>
+    <link rel="stylesheet" th:href="@{/css/utils.css}">
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <style>
+        /* Set the margin and padding of the body to 0 */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set the margin and padding of the header to 0 */
+        header {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            /* Set the height of the header to 100% of the viewport height */
+            height: 100vh;
+            /* background-color: #f2f2f2; */
+        }
+    </style> -->
+    <!-- <style>
+        header {
+            position: fixed;
+            margin: 0;
+            padding: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            font-size: 15px;
+            height: 100vh;
+            width: 89%;
+        }
+    </style> -->
+</head>
+
+<body>
+
+<!-- <div class="container mx-auto">
+    <header>
+        <nav class="flex justify-between">
+            <div class="logo font-bold flex items-center text-blue">Find&Connect</div>
+            <ul class="navbar flex items-center content">
+                <li><a href="#"><span>HOME</span></a></li>
+
+                <li><a href="find.html"><span>FIND</span>&nbsp;<span>CONTEST</span></a></li>
+
+                <li><a href="ApplyforMentor.html" target="_blank"><span>CONNECT</span></span></a></li>
+
+                <li><a href="notify.html"><span>NOTIFY</span>&nbsp;<span>CONTEST</span></a></li>
+
+                <li><a href="search.html"><span>SEARCH</span>&nbsp;<span>PROBLEM</span></a></li>
+
+                <li><a href="contact.html"><span>CONTACT</span></a></li>
+                <li><a href="login.html" target="_blank"><span>LOG</span>&nbsp;<span>IN</span></a></li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+</div> -->
+<div class="wrapper container mx-auto">
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="post">
+        <div class="input-box">
+            <input type="text" placeholder="Username" name="username" id="username" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Password" name="password" id="password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <!--<div class="remember-forget">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#">Forget Password?</a>
+        </div>-->
+        <input type="submit" value="Login" class="btn">
+
+        <div class="register-link">
+            <p>Don't have an account? <a th:href=@{/register}>Register</a></p>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

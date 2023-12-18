@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notification form</title>
+    <link rel="stylesheet" th:href="@{/css/style2.css}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+<div class="wrapper">
+    <form th:action="@{/contests/add}" method="post" th:object="${contest}">
+        <h1>Notify</h1>
+        <input type="hidden" name="id"  th:field="*{id}">
+        <div class="input-box">
+            <input type="text" name="type" id="type" th:field="*{type}" placeholder="Contest Type" required>
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+            <input type="text" name="place" id="place" th:field="*{place}" placeholder="Venue (if any)">
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+            <input type="datetime-local" th:field="*{date}" name="date" id="date" placeholder="Date" required>
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+            <input type="url" th:field="*{link}" name="link" id="link" placeholder="Event Link/Contest Link" required>
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="input-box">
+            <input type="text" th:field="*{host}" name="host" id="host" placeholder="Host(oj/university)" required>
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+</body>
+
+</html>

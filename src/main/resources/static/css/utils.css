@@ -1,0 +1,90 @@
+.min-h-screen{
+    min-height: 100vh;
+}
+
+.bg-red{
+    background-color: red;
+}
+
+.mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.items-center{
+    align-items: center;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.font-bold{
+    font-weight: bolder;
+}
+
+.my-1{
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.my-2{
+    margin-top: 26px;
+    margin-bottom: 26px;
+}
+
+.px-2{
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.text-blue{
+    color: rgb(227 74 56);;
+}
+
+
+.overflow-x-hidden{
+    overflow-x: hidden;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/* Add this to your existing CSS file or create a new one */
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px; /* Adjusted padding for smaller height and width */
+    font-size: 14px; /* Adjusted font size */
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    margin-right: 8px; /* Adjusted margin for spacing between buttons */
+}
+
+.btn-primary {
+    border: 2px solid #007bff; /* Blue border color */
+    color: white;
+    background-color: #007bff;
+}
+
+.btn-danger {
+    border: 2px solid #dc3545; /* Red border color */
+    color: white;
+    background-color: #dc3545;
+}

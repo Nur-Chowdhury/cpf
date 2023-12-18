@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contest Finder & Mentor Allocation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/utils.css}">
+</head>
+
+<body class='overflow-x-hidden'>
+<div class="container mx-auto">
+    <header>
+        <nav class="flex justify-between">
+            <div class="logo font-bold flex items-center text-blue">Find&Connect</div>
+            <ul class="navbar flex items-center content">
+                <li><a th:href="@{/}"><span>HOME</span></a></li>
+
+                <li><a th:href="@{/contests}"><span>FIND</span>&nbsp;<span>CONTEST</span></a></li>
+
+
+                <li>
+                    <div class="dropdown content">
+                        <b><span>Connect</span></b>
+                        <div class="dropdown-content">
+                            <a th:href="@{/mentor}">As Mentor</a>
+                            <a th:href="@{/mentee}" target="_blank">As Mentee</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a th:href="@{/contests/add}"><span>NOTIFY</span>&nbsp;<span>CONTEST</span></a></li>
+
+                <li><a th:href="@{/problems}"><span>SEARCH</span>&nbsp;<span>PROBLEM</span></a></li>
+
+                <li><a th:href="@{/query}"><span>CONTACT</span></a></li>
+                <li class="nav-item active">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#"><h3>Login</h3></a>
+                </li>
+                <li class="nav-item active" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div class="dropdown content">
+                        <h3 th:text="${#authentication.name}">Username</h3>
+                        <div class="dropdown-content">
+                            <a class="nav-link" th:href="@{/user/{id}(id=${loggedid})}"><span>My Profile</span></a>
+                            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><span>Logout</span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+<!--    <div class="input-box">-->
+<!--        <form th:action="@{/mentor/submit}" method="post">-->
+<!--            <label for="about">Tell About Your CP journey and current state:</label>-->
+<!--            <textarea id="about" name="about" placeholder="Please include your handles of different ojs." required></textarea>-->
+<!--            <button type="submit" class="btn">Submit</button>-->
+<!--        </form>-->
+<!--    </div>-->
+    <main class="min-h-screen">
+        <br><br><br>
+        <section class="section1">
+            <div class="wrapper">
+                <form th:action="@{/mentor/submit}" method="post">
+                    <div class="input-box">
+                        <center>
+
+                            <label for="about">Tell About Your CP journey and current state:</label>
+                            <br>
+
+                            <textarea id="about" name="about" rows="10" cols="60" placeholder="Please include your handles of different ojs." required></textarea>
+
+                        </center>
+                    </div>
+
+
+                    <div class="input-box">
+                        <!-- <input type="text" required>
+                        <i class='bx bxs-user'></i> -->
+                    </div>
+                    <center><button type="submit" class="btn">Submit</button></center>
+
+                </form>
+            </div>
+            <div class="flex">
+
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        Copyright &copy; Find&Connect.com | All rights reserved
+    </footer>
+
+</div>
+</body>
+
+</html>

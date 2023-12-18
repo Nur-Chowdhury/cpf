@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* below correction */
+    /* background: #2a8fe2; */
+    background: #fff;
+    /* background: #257ce0; */
+    /* background: url(2.jpg) no-repeat; */
+    /* background-size: cover; */
+    /* background-position: center; */
+}
+
+/* .container{
+    max-width: 80vw;
+    font-family: 'Ubuntu', sans-serif;
+}
+.mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+.flex{
+    display: flex;
+}
+
+.items-center{
+    align-items: center;
+}
+
+.justify-between{
+    justify-content: space-between;
+} */
+
+.wrapper {
+    width: 420px;
+    /* background: purple; */
+    /* background: #e97e26; */
+    background: #2a8fe2;
+    /* below correction */
+    /* background: transparent; */
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    /* correction complete */
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.wrapper h1 {
+    font-size: 34px;
+    text-align: center;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.box{
+    padding: 8px 0;
+    margin: 12px 22px;
+    min-width: 20vw;
+    border: 2px solid rgb(120, 54, 16);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    /* border: 2px #000000; */
+    border-radius: 400px;
+    font-size: 16px;
+    color: #fff;
+    /* color: #000000; */
+    padding: 20px 45px 20px 20px;
+}
+input-box textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    /* border: 2px #000000; */
+    border-radius: 400px;
+    font-size: 16px;
+    color: #fff;
+    /* color: #000000; */
+    padding: 20px 45px 20px 20px;
+}
+
+
+.input-box input ::placeholder {
+    color: #fff;
+}
+
+
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember-forget {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5 px;
+    margin: -15px 0 15px;
+
+}
+
+.remember-forget label input {
+    accent-color: #fff;
+    /* accent-color: #000000; */
+    margin-right: 3px;
+}
+
+.remember-forget a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.remember-forget a:hover {
+    text-decoration: underline;
+
+}
+
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.wrapper .register-link {
+    font-size: 14.4px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a :hover {
+    text-decoration: underline;
+
+}
